@@ -1,0 +1,2126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podcast Production Pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #181614;
+        --paper: #f4efe6;
+        --paper-dim: #e9e2d3;
+        --amber: #e8722c;
+        --amber-dim: #c45d1f;
+        --green-led: #5fa777;
+        --line: rgba(24, 22, 20, 0.14);
+        --line-strong: rgba(24, 22, 20, 0.28);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 24px;
+      }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      ::selection {
+        background: var(--amber);
+        color: var(--paper);
+      }
+
+      /* ===== NAV ===== */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 32px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .nav-mark {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-mark .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--amber);
+        box-shadow: 0 0 0 3px rgba(232, 114, 44, 0.18);
+      }
+      .nav-mark span {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: 18px;
+        letter-spacing: -0.01em;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .nav-cta {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        border: 1px solid var(--line-strong);
+        padding: 9px 18px;
+        border-radius: 2px;
+        text-decoration: none;
+        color: var(--ink);
+        transition: all 0.2s ease;
+      }
+      .nav-cta:hover {
+        background: var(--ink);
+        color: var(--paper);
+        border-color: var(--ink);
+      }
+      .nav-cta.primary {
+        background: var(--ink);
+        color: var(--paper);
+        border-color: var(--ink);
+      }
+      .nav-cta.primary:hover {
+        background: var(--amber);
+        border-color: var(--amber);
+        color: var(--ink);
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        padding: 64px 32px 80px;
+        max-width: 1180px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .hero-eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--amber-dim);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      .rec-led {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #d63b2e;
+        animation: blink 1.6s infinite;
+      }
+      @keyframes blink {
+        0%,
+        45% {
+          opacity: 1;
+        }
+        50%,
+        95% {
+          opacity: 0.25;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .hero h1 {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: clamp(40px, 6.4vw, 84px);
+        line-height: 0.96;
+        letter-spacing: -0.015em;
+        max-width: 880px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--amber);
+      }
+      .hero-sub {
+        margin-top: 28px;
+        font-size: 18px;
+        line-height: 1.6;
+        color: rgba(24, 22, 20, 0.68);
+        max-width: 520px;
+        font-weight: 400;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 36px;
+        margin-top: 48px;
+        flex-wrap: wrap;
+      }
+      .hero-meta div {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: rgba(24, 22, 20, 0.55);
+      }
+      .hero-meta strong {
+        display: block;
+        font-family: "Archivo Expanded", sans-serif;
+        font-size: 26px;
+        color: var(--ink);
+        font-weight: 700;
+        margin-bottom: 2px;
+      }
+
+      /* waveform divider */
+      .wave {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 44px;
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      .wave span {
+        flex: 1;
+        background: var(--line);
+        width: 2.5px;
+        border-radius: 2px;
+        transform-origin: center;
+        animation:
+          soundWave 1.4s ease-in-out infinite alternate,
+          barGlow 2.8s ease-in-out infinite alternate;
+      }
+      .wave span:nth-child(1) {
+        animation-delay: 0s;
+        animation-duration: 1.1s, 2.4s;
+      }
+      .wave span:nth-child(2) {
+        animation-delay: 0.12s;
+        animation-duration: 1.5s, 3s;
+      }
+      .wave span:nth-child(3) {
+        animation-delay: 0.35s;
+        animation-duration: 1s, 2.6s;
+      }
+      .wave span:nth-child(4) {
+        animation-delay: 0.08s;
+        animation-duration: 1.6s, 3.2s;
+      }
+      .wave span:nth-child(5) {
+        animation-delay: 0.25s;
+        animation-duration: 1.2s, 2.5s;
+      }
+      .wave span:nth-child(6) {
+        animation-delay: 0.42s;
+        animation-duration: 1.4s, 2.8s;
+      }
+      .wave span:nth-child(7) {
+        animation-delay: 0.18s;
+        animation-duration: 0.9s, 2.2s;
+      }
+      .wave span:nth-child(8) {
+        animation-delay: 0.5s;
+        animation-duration: 1.3s, 3.1s;
+      }
+      .wave span:nth-child(9) {
+        animation-delay: 0.05s;
+        animation-duration: 1.7s, 2.7s;
+      }
+      .wave span:nth-child(10) {
+        animation-delay: 0.3s;
+        animation-duration: 1.1s, 2.9s;
+      }
+      .wave span:nth-child(11) {
+        animation-delay: 0.45s;
+        animation-duration: 1.5s, 2.3s;
+      }
+      .wave span:nth-child(12) {
+        animation-delay: 0.15s;
+        animation-duration: 1s, 3.3s;
+      }
+      .wave span:nth-child(13) {
+        animation-delay: 0.38s;
+        animation-duration: 1.4s, 2.6s;
+      }
+      .wave span:nth-child(14) {
+        animation-delay: 0.22s;
+        animation-duration: 1.2s, 3s;
+      }
+      .wave span:nth-child(15) {
+        animation-delay: 0.48s;
+        animation-duration: 1.6s, 2.4s;
+      }
+      .wave span:nth-child(16) {
+        animation-delay: 0.1s;
+        animation-duration: 1.1s, 2.8s;
+      }
+      .wave span:nth-child(17) {
+        animation-delay: 0.32s;
+        animation-duration: 1.3s, 3.2s;
+      }
+      .wave span:nth-child(18) {
+        animation-delay: 0.4s;
+        animation-duration: 1s, 2.5s;
+      }
+      .wave span:nth-child(19) {
+        animation-delay: 0.2s;
+        animation-duration: 1.5s, 2.7s;
+      }
+      .wave span:nth-child(20) {
+        animation-delay: 0.55s;
+        animation-duration: 1.2s, 3.1s;
+      }
+      .wave span:nth-child(3),
+      .wave span:nth-child(8),
+      .wave span:nth-child(13),
+      .wave span:nth-child(18) {
+        background: var(--amber);
+        opacity: 0.55;
+      }
+      @keyframes soundWave {
+        0% {
+          transform: scaleY(0.15);
+        }
+        25% {
+          transform: scaleY(0.6);
+        }
+        50% {
+          transform: scaleY(0.35);
+        }
+        75% {
+          transform: scaleY(0.85);
+        }
+        100% {
+          transform: scaleY(1);
+        }
+      }
+      @keyframes barGlow {
+        0% {
+          filter: brightness(1) drop-shadow(0 0 0 transparent);
+        }
+        50% {
+          filter: brightness(1.3) drop-shadow(0 0 4px rgba(232, 114, 44, 0.25));
+        }
+        100% {
+          filter: brightness(1) drop-shadow(0 0 0 transparent);
+        }
+      }
+
+      /* ===== SECTION LABEL ===== */
+      .sec-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--amber-dim);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .sec-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+      .sec-title {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: clamp(28px, 3.4vw, 42px);
+        letter-spacing: -0.01em;
+        margin-bottom: 12px;
+        max-width: none;
+      }
+
+      /* ===== PLANS (channel strip) ===== */
+      .plans-section {
+        padding: 64px 32px 40px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .plans {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 48px;
+        position: relative;
+      }
+      .plan {
+        padding: 36px 28px 28px;
+        position: relative;
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        background: var(--paper);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: 0 4px 12px rgba(24, 22, 20, 0.02);
+        cursor: pointer;
+      }
+      .plan:hover {
+        transform: translateY(-8px);
+        border-color: var(--ink);
+        box-shadow: 0 16px 36px rgba(24, 22, 20, 0.06);
+        z-index: 3;
+      }
+      .plan.is-standard {
+        background: var(--ink);
+        border: 1px solid var(--amber);
+        box-shadow: 0 4px 20px rgba(232, 114, 44, 0.05);
+        z-index: 2;
+      }
+      .plan.is-standard:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--amber);
+        box-shadow: 0 20px 48px rgba(232, 114, 44, 0.15);
+      }
+      .meter {
+        display: flex;
+        gap: 3px;
+        height: 5px;
+        margin-bottom: 24px;
+      }
+      .meter span {
+        flex: 1;
+        background: var(--line-strong);
+        border-radius: 1px;
+      }
+      .plan.is-standard .meter span {
+        background: rgba(244, 239, 230, 0.16);
+      }
+      .meter span.lit {
+        background: var(--amber);
+        animation: meter-vu 0.6s ease-in-out infinite alternate;
+      }
+      .plan.is-standard .meter span.lit {
+        background: var(--amber);
+      }
+      .meter span.lit:nth-child(1) {
+        animation-duration: 0.3s;
+      }
+      .meter span.lit:nth-child(2) {
+        animation-duration: 0.5s;
+      }
+      .meter span.lit:nth-child(3) {
+        animation-duration: 0.4s;
+      }
+      .meter span.lit:nth-child(4) {
+        animation-duration: 0.6s;
+      }
+      .meter span.lit:nth-child(5) {
+        animation-duration: 0.35s;
+      }
+      .meter span.lit:nth-child(6) {
+        animation-duration: 0.48s;
+      }
+      .meter span.lit:nth-child(7) {
+        animation-duration: 0.32s;
+      }
+      .meter span.lit:nth-child(8) {
+        animation-duration: 0.55s;
+      }
+
+      @keyframes meter-vu {
+        0%,
+        100% {
+          opacity: 0.3;
+          box-shadow: none;
+        }
+        50% {
+          opacity: 1;
+          box-shadow: 0 0 6px var(--amber);
+        }
+      }
+
+      /* Plan Selection Glows */
+      .plan.is-selected {
+        border-color: var(--amber) !important;
+        box-shadow: 0 8px 24px rgba(232, 114, 44, 0.12) !important;
+      }
+      .plan.is-standard.is-selected {
+        border-color: var(--amber) !important;
+        box-shadow: 0 16px 40px rgba(232, 114, 44, 0.25) !important;
+      }
+
+      /* Sequential meter sweep animation when selected */
+      .plan .meter span {
+        transform-origin: left;
+        transition:
+          background 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .plan.is-selected .meter span {
+        animation: meterSweep 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+        transform-origin: left;
+      }
+      .plan.is-selected .meter span.lit {
+        animation:
+          meterSweep 0.6s cubic-bezier(0.22, 1, 0.36, 1) both,
+          meterGlow 1.2s ease-in-out 0.6s infinite alternate;
+        transform-origin: left;
+      }
+
+      /* Staggered delays — lines fill left to right like a progress bar */
+      .plan.is-selected .meter span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .plan.is-selected .meter span:nth-child(2) {
+        animation-delay: 0.06s;
+      }
+      .plan.is-selected .meter span:nth-child(3) {
+        animation-delay: 0.12s;
+      }
+      .plan.is-selected .meter span:nth-child(4) {
+        animation-delay: 0.18s;
+      }
+      .plan.is-selected .meter span:nth-child(5) {
+        animation-delay: 0.24s;
+      }
+      .plan.is-selected .meter span:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+      .plan.is-selected .meter span:nth-child(7) {
+        animation-delay: 0.36s;
+      }
+      .plan.is-selected .meter span:nth-child(8) {
+        animation-delay: 0.42s;
+      }
+
+      /* Unselected plan meter — subtle idle pulse on lit bars */
+      .plan:not(.is-selected) .meter span.lit {
+        animation: meterIdle 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes meterSweep {
+        0% {
+          transform: scaleX(0);
+          opacity: 0.3;
+        }
+        60% {
+          opacity: 1;
+        }
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes meterGlow {
+        0% {
+          box-shadow: 0 0 2px rgba(232, 114, 44, 0.2);
+          filter: brightness(1);
+        }
+        100% {
+          box-shadow: 0 0 8px rgba(232, 114, 44, 0.5);
+          filter: brightness(1.2);
+        }
+      }
+
+      @keyframes meterIdle {
+        0% {
+          opacity: 0.45;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .plan-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(24, 22, 20, 0.5);
+        margin-bottom: 8px;
+      }
+      .plan.is-standard .plan-tag {
+        color: rgba(244, 239, 230, 0.55);
+      }
+      .plan-name {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+      .plan.is-standard .plan-name {
+        color: var(--paper);
+      }
+      .plan-dur {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        color: rgba(24, 22, 20, 0.6);
+        margin-bottom: 28px;
+      }
+      .plan.is-standard .plan-dur {
+        color: rgba(244, 239, 230, 0.65);
+      }
+
+      .plan-price {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: -0.01em;
+        margin-bottom: 2px;
+      }
+      .plan.is-standard .plan-price {
+        color: var(--paper);
+      }
+      .plan-price.contact {
+        font-size: 24px;
+        color: var(--amber-dim);
+      }
+      .plan.is-standard .plan-price.contact {
+        color: var(--amber);
+      }
+      .plan-price-note {
+        font-size: 12px;
+        color: rgba(24, 22, 20, 0.5);
+        margin-bottom: 28px;
+      }
+      .plan.is-standard .plan-price-note {
+        color: rgba(244, 239, 230, 0.5);
+      }
+
+      .feat-list {
+        list-style: none;
+        flex: 1;
+      }
+      .feat-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 11px 0;
+        border-top: 1px solid var(--line);
+        font-size: 13.5px;
+        line-height: 1.45;
+      }
+      .feat-list li:first-child {
+        border-top: none;
+      }
+      .plan.is-standard .feat-list li {
+        border-top: 1px solid rgba(244, 239, 230, 0.12);
+      }
+      .feat-list li .ico {
+        color: var(--amber);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        margin-top: 1px;
+        flex-shrink: 0;
+      }
+      .feat-list li .ftext strong {
+        display: block;
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .plan.is-standard .feat-list li .ftext strong {
+        color: var(--paper);
+      }
+      .feat-list li .ftext span {
+        display: block;
+        color: rgba(24, 22, 20, 0.55);
+        font-size: 12px;
+        margin-top: 1px;
+      }
+      .plan.is-standard .feat-list li .ftext span {
+        color: rgba(244, 239, 230, 0.55);
+      }
+
+      .plan-cta {
+        margin-top: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        letter-spacing: 0.04em;
+        border: 1px solid var(--ink);
+        padding: 14px 20px;
+        border-radius: 3px;
+        text-decoration: none;
+        color: var(--ink);
+        background: transparent;
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 100%;
+        font-weight: 500;
+      }
+      .plan-cta:hover {
+        background: var(--ink);
+        color: var(--paper);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(24, 22, 20, 0.15);
+      }
+      .plan.is-standard .plan-cta {
+        background: var(--amber);
+        color: var(--ink);
+        border-color: var(--amber);
+        font-weight: 600;
+      }
+      .plan.is-standard .plan-cta:hover {
+        background: transparent;
+        color: var(--amber);
+        border-color: var(--amber);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(232, 114, 44, 0.3);
+      }
+
+      .badge-pop {
+        position: absolute;
+        top: 0;
+        right: 28px;
+        transform: translateY(-50%);
+        background: var(--amber);
+        color: var(--ink);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 2px;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(232, 114, 44, 0.25);
+        border: 1px solid var(--ink);
+      }
+
+      /* ===== BULK BAR ===== */
+      .bulk {
+        margin-top: 24px;
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        padding: 22px 28px;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--paper-dim);
+        overflow-x: auto;
+        box-shadow: 0 4px 12px rgba(24, 22, 20, 0.02);
+      }
+      .bulk-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: rgba(24, 22, 20, 0.55);
+        padding-right: 28px;
+        border-right: 1px solid var(--line-strong);
+        white-space: nowrap;
+      }
+      .bulk-item {
+        padding: 0 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        border-right: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      .bulk-item:last-child {
+        border-right: none;
+      }
+      .bulk-item .n {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+      }
+      .bulk-item .d {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--amber-dim);
+      }
+
+      /* ===== WHY US / WAVY FLOW ===== */
+      .specs {
+        padding: 80px 32px 40px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .flow-container {
+        position: relative;
+        max-width: 1180px;
+        margin: 40px auto 0;
+      }
+      .flow-wave-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .flow-wave-path {
+        stroke-dasharray: 8 6;
+        animation: flow-dash 2s linear infinite;
+      }
+      @keyframes flow-dash {
+        to {
+          stroke-dashoffset: -28;
+        }
+      }
+      .flow-steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        position: relative;
+        z-index: 2;
+      }
+      .flow-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .step-node-area {
+        height: 200px;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+      .flow-node {
+        position: absolute;
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 700;
+        font-size: 12.5px;
+        line-height: 1.2;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--ink);
+        background: var(--paper-dim);
+        color: var(--ink);
+        transition: all 0.3s ease;
+        cursor: default;
+      }
+      /* Circle Node */
+      .circle-node {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      /* Oval Node */
+      .oval-node {
+        width: 140px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      /* Step number badge hanging outside the node */
+      .step-num-badge {
+        position: absolute;
+        top: -12px;
+        left: -8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        font-weight: 600;
+        background: var(--amber);
+        color: var(--ink);
+        padding: 2px 6px;
+        border: 1px solid var(--ink);
+        border-radius: 2px;
+        z-index: 3;
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+
+      /* Vertical alignment centers:
+     Step 1 & 3 centers are at Y = 60px.
+     Step 2 & 4 centers are at Y = 140px.
+  */
+      .step-1 .flow-node,
+      .step-3 .flow-node {
+        top: 60px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .step-2 .flow-node,
+      .step-4 .flow-node {
+        top: 140px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .flow-node:hover {
+        background: var(--amber);
+        color: var(--paper);
+        border-color: var(--amber);
+      }
+      .step-1 .flow-node:hover,
+      .step-3 .flow-node:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+      .step-2 .flow-node:hover,
+      .step-4 .flow-node:hover {
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      /* Info Text Area */
+      .flow-info {
+        margin-top: 20px;
+        padding: 20px;
+        background: var(--paper-dim);
+        border: 1px solid var(--line-strong);
+        border-radius: 4px;
+        max-width: 265px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(24, 22, 20, 0.02);
+      }
+      .flow-step:hover .flow-info {
+        border-color: var(--amber);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(232, 114, 44, 0.08);
+      }
+      .flow-info p {
+        font-size: 13.5px;
+        color: rgba(24, 22, 20, 0.65);
+        line-height: 1.55;
+      }
+      /* Highlight Style */
+      .text-highlight {
+        font-weight: 600;
+        color: var(--ink);
+        background: linear-gradient(
+          120deg,
+          rgba(232, 114, 44, 0.12) 0%,
+          rgba(232, 114, 44, 0.12) 100%
+        );
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+
+      /* ===== FOOTER / CONTACT ===== */
+      .closer {
+        background: var(--ink);
+        color: var(--paper);
+        padding: 90px 32px 60px;
+        margin-top: 40px;
+      }
+      .closer-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .closer h2 {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 800;
+        font-size: clamp(32px, 5vw, 58px);
+        letter-spacing: -0.015em;
+        max-width: 720px;
+        line-height: 1.05;
+      }
+      .closer h2 em {
+        font-style: normal;
+        color: var(--amber);
+      }
+      .closer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 48px;
+        flex-wrap: wrap;
+        gap: 32px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(244, 239, 230, 0.15);
+      }
+      .closer-left {
+        flex: 1;
+        min-width: 280px;
+      }
+      .closer-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        min-width: 240px;
+      }
+      .closer-contact-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .closer-contact-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        color: var(--amber);
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+      .closer-address {
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .closer-address a {
+        color: rgba(244, 239, 230, 0.95);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(244, 239, 230, 0.4);
+        padding-bottom: 1px;
+        transition: all 0.2s ease;
+      }
+      .closer-address a:hover {
+        color: var(--amber);
+        border-bottom-color: var(--amber);
+      }
+      .closer-phone,
+      .closer-email,
+      .closer-association {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13.5px;
+        color: rgba(244, 239, 230, 0.6);
+      }
+      .closer-phone a,
+      .closer-email a,
+      .closer-association a {
+        color: rgba(244, 239, 230, 0.95);
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+      .closer-phone a:hover,
+      .closer-email a:hover,
+      .closer-association a:hover {
+        color: var(--amber);
+      }
+      .closer-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--amber);
+        color: var(--ink);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        padding: 16px 28px;
+        border-radius: 2px;
+        text-decoration: none;
+        font-weight: 500;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
+      }
+      .closer-cta:hover {
+        transform: translateX(4px);
+      }
+      .closer-cta.whatsapp-cta {
+        background: #25d366;
+        color: #121212;
+      }
+      .closer-cta.whatsapp-cta:hover {
+        background: #20ba5a;
+      }
+      .closer-footer-note {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(244, 239, 230, 0.08);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        color: rgba(244, 239, 230, 0.4);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        text-align: left;
+      }
+
+      @media (max-width: 860px) {
+        .plans {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .flow-wave-svg {
+          display: none;
+        }
+        .flow-steps {
+          grid-template-columns: 1fr;
+          gap: 48px;
+          padding-left: 52px;
+          position: relative;
+        }
+        .flow-steps::before {
+          content: "";
+          position: absolute;
+          left: 24px;
+          top: 20px;
+          bottom: 20px;
+          width: 2px;
+          background-image: linear-gradient(
+            to bottom,
+            var(--amber) 50%,
+            transparent 50%
+          );
+          background-size: 2px 8px;
+          z-index: 1;
+        }
+        .flow-step {
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+        .step-node-area {
+          height: 120px;
+          width: 100%;
+          margin-right: 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          z-index: 2;
+          padding-left: 8px;
+        }
+        .flow-node {
+          position: relative;
+          left: auto !important;
+          top: auto !important;
+          transform: none !important;
+        }
+        .circle-node,
+        .oval-node {
+          width: 140px;
+          height: 80px;
+          border-radius: 50% !important;
+        }
+        .flow-node .step-num-badge {
+          display: none;
+        }
+        .flow-node::after {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: var(--amber);
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          margin-top: -5px;
+          margin-left: -5px;
+          offset-path: ellipse(70px 40px at 50% 50%);
+          animation: orbitEllipse 3s linear infinite;
+          z-index: 4;
+        }
+        @keyframes orbitEllipse {
+          0% {
+            offset-distance: 0%;
+          }
+          100% {
+            offset-distance: 100%;
+          }
+        }
+        .step-num-badge {
+          top: -12px;
+          left: -8px;
+          font-size: 10.5px;
+        }
+        .flow-info {
+          margin-top: 12px;
+          max-width: 290px;
+          flex: none;
+        }
+        .flow-step {
+          position: relative;
+        }
+        .hero-meta {
+          gap: 24px;
+        }
+        .nav {
+          padding: 20px;
+        }
+        .hero {
+          padding: 40px 20px 56px;
+        }
+        .plans-section {
+          padding: 48px 20px 40px;
+        }
+        .specs {
+          padding: 40px 20px;
+        }
+        .gallery {
+          padding: 40px 20px 56px;
+        }
+        .closer {
+          padding: 64px 20px 40px;
+        }
+        .closer-left {
+          width: 100%;
+        }
+        .closer-right {
+          align-items: flex-start;
+          width: 100%;
+        }
+        .bulk {
+          flex-wrap: wrap;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rec-led {
+          animation: none;
+        }
+      }
+
+      /* ===== GALLERY ===== */
+      .gallery {
+        padding: 40px 32px 80px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .gallery-grid {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr 1fr;
+        grid-template-rows: 200px 200px;
+        gap: 10px;
+      }
+      .gal-cell {
+        border-radius: 3px;
+        overflow: hidden;
+        background: var(--paper-dim);
+        border: 1px solid var(--line-strong);
+        position: relative;
+      }
+      .gal-cell.gal-tall {
+        grid-row: 1 / 3;
+      }
+      .gal-cell img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(15%) contrast(1.05);
+        transition:
+          filter 0.3s ease,
+          transform 0.4s ease;
+      }
+      .gal-cell:hover img {
+        filter: grayscale(0%) contrast(1.05);
+        transform: scale(1.03);
+      }
+      .gallery-note {
+        margin-top: 18px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        color: rgba(24, 22, 20, 0.45);
+        letter-spacing: 0.02em;
+      }
+
+      /* ===== CONTACT FORM ===== */
+      .contact-section {
+        padding: 80px 32px 96px;
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-top: 40px;
+      }
+      .contact-form {
+        margin-top: 0;
+        width: 100%;
+        max-width: none;
+        background: var(--paper-dim);
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        padding: 32px;
+        box-shadow: 0 4px 12px rgba(24, 22, 20, 0.02);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .contact-form:hover {
+        border-color: var(--amber);
+        box-shadow: 0 12px 30px rgba(232, 114, 44, 0.08);
+      }
+      .contact-info-sidebar {
+        background: var(--paper-dim);
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        padding: 32px;
+        box-shadow: 0 4px 12px rgba(24, 22, 20, 0.02);
+        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 100%;
+      }
+      .contact-info-sidebar:hover {
+        border-color: var(--amber);
+        box-shadow: 0 12px 30px rgba(232, 114, 44, 0.08);
+      }
+      .info-sidebar-group {
+        display: flex;
+        flex-direction: column;
+      }
+      .info-sidebar-group.address-group {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+      }
+      .sidebar-box-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        font-weight: 600;
+        color: var(--amber-dim);
+        letter-spacing: 0.08em;
+        display: block;
+        margin-bottom: 12px;
+      }
+      .info-sidebar-group h3 {
+        font-family: "Archivo Expanded", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--ink);
+        margin-bottom: 8px;
+      }
+      .info-sidebar-group p {
+        font-size: 13.5px;
+        color: rgba(24, 22, 20, 0.65);
+        line-height: 1.55;
+        margin-bottom: 16px;
+      }
+      .sidebar-box-link {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--ink);
+        text-decoration: none;
+        display: inline-block;
+        border-bottom: 1px solid var(--ink);
+        padding-bottom: 2px;
+        transition: all 0.2s ease;
+      }
+      .sidebar-box-link:hover {
+        color: var(--amber);
+        border-color: var(--amber);
+      }
+      .sidebar-phone-numbers {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .sidebar-contact-item {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        color: var(--ink);
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 16px;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+      .sidebar-contact-item:hover {
+        border-color: var(--amber);
+        color: var(--amber);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .form-row .form-field {
+        margin-bottom: 0;
+      }
+      .form-field label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: rgba(24, 22, 20, 0.55);
+      }
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+        font-family: "Inter", sans-serif;
+        font-size: 14.5px;
+        color: var(--ink);
+        background: var(--paper-dim);
+        border: 1px solid var(--line-strong);
+        border-radius: 2px;
+        padding: 12px 14px;
+        outline: none;
+        transition: border-color 0.2s ease;
+        resize: vertical;
+      }
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+        border-color: var(--amber);
+        background: var(--paper);
+      }
+      .form-submit {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 0.03em;
+        background: var(--ink);
+        color: var(--paper);
+        border: none;
+        padding: 15px 28px;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        margin-top: 4px;
+      }
+      .form-submit:hover {
+        background: var(--amber-dim);
+      }
+      .form-status {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--green-led);
+        margin-top: 14px;
+        min-height: 16px;
+      }
+
+      @media (max-width: 860px) {
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 160px 160px 160px;
+        }
+        .gal-cell.gal-tall {
+          grid-row: 1 / 2;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav {
+          padding: 16px 12px;
+        }
+        .nav-mark span {
+          font-size: 16px;
+        }
+        .nav-actions {
+          gap: 6px;
+        }
+        .nav-cta {
+          padding: 8px 10px;
+          font-size: 10.5px;
+        }
+        .hero {
+          padding: 32px 16px 44px;
+        }
+        .hero-eyebrow {
+          font-size: 11px;
+        }
+        .hero-sub {
+          font-size: 16px;
+        }
+        .hero-meta {
+          gap: 18px 28px;
+          margin-top: 36px;
+        }
+        .hero-meta strong {
+          font-size: 21px;
+        }
+        .wave {
+          height: 26px;
+          padding: 0 16px;
+          gap: 2px;
+        }
+        .plans-section {
+          padding: 40px 16px 32px;
+        }
+        .sec-title {
+          font-size: 26px;
+        }
+        .plan {
+          padding: 26px 20px 22px;
+        }
+        .plan-price {
+          font-size: 32px;
+        }
+        .badge-pop {
+          right: 20px;
+          font-size: 10px;
+          padding: 4px 10px;
+        }
+        .bulk {
+          padding: 18px 16px;
+        }
+        .bulk-label {
+          padding-right: 18px;
+        }
+        .bulk-item {
+          padding: 0 18px;
+        }
+        .specs {
+          padding: 32px 16px;
+        }
+        .flow-steps::before {
+          bottom: 170px;
+        }
+        .gallery {
+          padding: 32px 16px 44px;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 130px 130px 130px;
+          gap: 8px;
+        }
+        .contact-section {
+          padding: 44px 16px 56px;
+        }
+        .closer {
+          padding: 48px 16px 32px;
+        }
+        .closer h2 {
+          font-size: 30px;
+        }
+        .closer-cta {
+          width: 100%;
+          justify-content: center;
+        }
+        .closer-row {
+          align-items: stretch;
+        }
+      }
+    </style>
+    <script>
+      // ===== GOOGLE APPS SCRIPT WEB APP URL =====
+      // Apna deployed Google Apps Script URL yahan daalo
+      const SCRIPT_URL =
+        "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+    </script>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-mark">
+        <div class="dot"></div>
+        <span>SRM STUDIO</span>
+      </div>
+      <div class="nav-actions">
+        <a class="nav-cta primary" href="#contact">GET A QUOTE</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-eyebrow">
+        <span class="rec-led"></span> NOW RECORDING — PODCAST PRODUCTION DESK
+      </div>
+      <h1>Shoot it.<br />Cut it.<br /><em>Ship it everywhere.</em></h1>
+      <p class="hero-sub">
+        Studio shoot, full edit, color grade, teaser, and reels — one fixed
+        price, one team, one deliverable folder. No vendor juggling.
+      </p>
+      <div class="hero-meta">
+        <div><strong>2–4</strong>cameras per session</div>
+        <div><strong>48hr</strong>standard turnaround</div>
+        <div><strong>3</strong>tiers, fixed pricing</div>
+      </div>
+    </header>
+
+    <div class="wave" aria-hidden="true">
+      <span style="height: 30%"></span><span style="height: 60%"></span
+      ><span style="height: 20%"></span><span style="height: 80%"></span
+      ><span style="height: 40%"></span><span style="height: 70%"></span
+      ><span style="height: 15%"></span><span style="height: 55%"></span
+      ><span style="height: 90%"></span><span style="height: 35%"></span
+      ><span style="height: 65%"></span><span style="height: 25%"></span
+      ><span style="height: 50%"></span><span style="height: 75%"></span
+      ><span style="height: 30%"></span><span style="height: 45%"></span
+      ><span style="height: 85%"></span><span style="height: 20%"></span
+      ><span style="height: 60%"></span><span style="height: 40%"></span>
+    </div>
+
+    <section class="plans-section" id="pricing">
+      <div class="sec-label">Pricing desk</div>
+      <h2 class="sec-title">Three channels. Pick your length.</h2>
+
+      <div class="plans">
+        <div class="plan">
+          <div class="meter">
+            <span class="lit"></span><span class="lit"></span><span></span
+            ><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="plan-tag">Channel 01</div>
+          <div class="plan-name">Starter</div>
+          <div class="plan-dur">30 min podcast · 2 cameras</div>
+          <div class="plan-price">₹15,000</div>
+          <div class="plan-price-note">fixed, per episode</div>
+          <ul class="feat-list">
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Studio shoot</strong
+                ><span>2-camera setup, professional audio</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Sony Setup | (HD)</strong
+                ><span>Professional Lights</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Full episode edit</strong
+                ><span>Cut, sync, audio mix, color grade</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Teaser</strong><span>15–20 sec promo cut</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>5 reels</strong
+                ><span>Vertical recuts with captions</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext"><strong>2 revision rounds</strong></div>
+            </li>
+          </ul>
+          <a class="plan-cta" href="#contact" data-plan="starter"
+            >BOOK STARTER →</a
+          >
+        </div>
+
+        <div class="plan is-standard is-selected">
+          <span class="badge-pop">Most booked</span>
+          <div class="meter">
+            <span class="lit"></span><span class="lit"></span
+            ><span class="lit"></span><span class="lit"></span
+            ><span class="lit"></span><span></span><span></span><span></span>
+          </div>
+          <div class="plan-tag">Channel 02</div>
+          <div class="plan-name">Standard</div>
+          <div class="plan-dur">60 min podcast · 3 cameras</div>
+          <div class="plan-price">₹35,000</div>
+          <div class="plan-price-note">fixed, per episode</div>
+          <ul class="feat-list">
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Studio shoot</strong
+                ><span>3-camera setup, professional audio</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Sony Setup | (4k)</strong
+                ><span>Professional Lights</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Full episode edit</strong
+                ><span>Cut, sync, audio mix, color grade</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Teaser</strong><span>30–40 sec promo cut</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>10 reels</strong
+                ><span>Vertical recuts with captions</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext"><strong>Thumbnail design</strong></div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext"><strong>2 revision rounds</strong></div>
+            </li>
+          </ul>
+          <a class="plan-cta" href="#contact" data-plan="standard"
+            >BOOK STANDARD →</a
+          >
+        </div>
+
+        <div class="plan">
+          <div class="meter">
+            <span class="lit"></span><span class="lit"></span
+            ><span class="lit"></span><span class="lit"></span
+            ><span class="lit"></span><span class="lit"></span
+            ><span class="lit"></span><span></span>
+          </div>
+          <div class="plan-tag">Channel 03</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-dur">Long-form podcast · built around you</div>
+          <div class="plan-price contact">Contact sales</div>
+          <div class="plan-price-note">scoped to what you need</div>
+          <ul class="feat-list">
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Studio shoot</strong
+                ><span>Camera count sized to your format</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Full episode edit</strong
+                ><span>Cut, sync, audio mix, color grade</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Teaser</strong
+                ><span>Length tailored to your platform</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Reels package</strong
+                ><span>Volume based on episode length</span>
+              </div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext"><strong>Thumbnail design</strong></div>
+            </li>
+            <li>
+              <span class="ico">▸</span>
+              <div class="ftext">
+                <strong>Flexible revisions</strong
+                ><span>Set to match your workflow</span>
+              </div>
+            </li>
+          </ul>
+          <a class="plan-cta" href="#contact" data-plan="premium"
+            >TALK TO US →</a
+          >
+        </div>
+      </div>
+
+      <div class="bulk">
+        <div class="bulk-label">Bulk signing</div>
+        <div class="bulk-item">
+          <span class="n">4 episodes / mo</span
+          ><span class="d">~10% OFF PER EPISODE</span>
+        </div>
+        <div class="bulk-item">
+          <span class="n">8 episodes / mo</span
+          ><span class="d">~18% OFF PER EPISODE</span>
+        </div>
+        <div class="bulk-item">
+          <span class="n">12+ episodes / season</span
+          ><span class="d">~25% OFF PER EPISODE</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="specs">
+      <div class="sec-label">How it runs</div>
+      <h2 class="sec-title">Every plan, same signal chain.</h2>
+      <div class="flow-container">
+        <!-- Animated SVG dashed wave path connecting the nodes -->
+        <svg
+          class="flow-wave-svg"
+          viewBox="0 0 1000 200"
+          preserveAspectRatio="none"
+        >
+          <path
+            class="flow-wave-path"
+            d="M 125,60 C 250,60 250,140 375,140 C 500,140 500,60 625,60 C 750,60 750,140 875,140"
+            fill="none"
+            stroke="var(--amber)"
+            stroke-width="3"
+          />
+        </svg>
+
+        <div class="flow-steps">
+          <!-- Step 1 -->
+          <div class="flow-step step-1">
+            <div class="step-node-area">
+              <div class="flow-node circle-node">
+                <span class="step-num-badge">01</span>
+                WE record
+              </div>
+            </div>
+            <div class="flow-info">
+              <p>
+                Walk into our studio. Cameras, mics, and lighting are already
+                set for your tier — nothing to bring, nothing to rent.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flow-step step-2">
+            <div class="step-node-area">
+              <div class="flow-node oval-node">
+                <span class="step-num-badge">02</span>
+                We cut
+              </div>
+            </div>
+            <div class="flow-info">
+              <p>
+                Full edit, audio mix, and color grade on the master episode —
+                pacing tightened, nothing left raw.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flow-step step-3">
+            <div class="step-node-area">
+              <div class="flow-node circle-node">
+                <span class="step-num-badge">03</span>
+                We clip
+              </div>
+            </div>
+            <div class="flow-info">
+              <p>
+                Teaser and vertical reels pulled from the same session,
+                captioned and ready to post the same week.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flow-step step-4">
+            <div class="step-node-area">
+              <div class="flow-node oval-node">
+                <span class="step-num-badge">04</span>
+                You publish
+              </div>
+            </div>
+            <div class="flow-info">
+              <p>
+                One folder, every format — episode master, teaser, and reels —
+                delivered together, no separate invoices.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="studio">
+      <div class="sec-label">The setup</div>
+      <h2 class="sec-title">See the room before you book it.</h2>
+      <div class="gallery-grid">
+        <div class="gal-cell gal-tall">
+          <img
+            src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80"
+            alt="Podcast studio recording setup with microphones"
+            loading="lazy"
+          />
+        </div>
+        <div class="gal-cell">
+          <img
+            src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80"
+            alt="Multi-camera video podcast setup"
+            loading="lazy"
+          />
+        </div>
+        <div class="gal-cell">
+          <img
+            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80"
+            alt="Studio lighting and camera equipment"
+            loading="lazy"
+          />
+        </div>
+        <div class="gal-cell">
+          <img
+            src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?w=800&q=80"
+            alt="Audio mixing console in studio"
+            loading="lazy"
+          />
+        </div>
+        <div class="gal-cell">
+          <img
+            src="https://images.unsplash.com/photo-1590602847861-30e6c2b9c5e3?w=800&q=80"
+            alt="Podcast guest seating area"
+            loading="lazy"
+          />
+        </div>
+      </div>
+      <p class="gallery-note">
+        REFERENCE IMAGES — swap in your own studio photos before publishing
+      </p>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="sec-label">Get a quote</div>
+      <h2 class="sec-title">Tell us about your show.</h2>
+
+      <div class="contact-grid">
+        <!-- Left Column: Form -->
+        <form class="contact-form" id="quoteForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-name">Name</label>
+              <input
+                type="text"
+                id="f-name"
+                name="name"
+                required
+                placeholder="Your name"
+              />
+            </div>
+            <div class="form-field">
+              <label for="f-phone">Phone number</label>
+              <input
+                type="number"
+                id="f-phone"
+                name="phone"
+                required
+                placeholder="e.g. +91 98765 43210"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="f-plan">Plan you're interested in</label>
+              <select id="f-plan" name="plan">
+                <option value="starter">Starter — 30 min</option>
+                <option value="standard">Standard — 60 min</option>
+                <option value="premium">Premium — long-form</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="f-eps">Episodes per month</label>
+              <input
+                type="text"
+                id="f-eps"
+                name="episodes"
+                placeholder="e.g. 4, or one-off"
+              />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="f-msg">Tell us about your show</label>
+            <textarea
+              id="f-msg"
+              name="message"
+              rows="4"
+              placeholder="Format, guests, platforms you publish to..."
+            ></textarea>
+          </div>
+          <button type="submit" class="form-submit">SEND REQUEST →</button>
+          <p class="form-status" id="formStatus"></p>
+        </form>
+
+        <!-- Right Column: Info Sidebar -->
+        <div class="contact-info-sidebar">
+          <!-- Group 1: Address -->
+          <div class="info-sidebar-group address-group">
+            <span class="sidebar-box-label">STUDIO ADDRESS</span>
+            <h3>Mumbai Production Hub</h3>
+            <p>
+              4th Floor, Kailash Plaza, Off Link Rd, opp. YRF studios, Veera
+              Desai Industrial Estate, Andheri West, Mumbai, Maharashtra 400053
+            </p>
+            <a
+              class="sidebar-box-link"
+              href="https://google.com/maps/place/ACEFX+POST+PRODUCTION+COMPANY/@19.1358445,72.8334086,206m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x3be7b7367971cf91:0xe0af0185a781db96!2sACEFX+POST+PRODUCTION+COMPANY!8m2!3d19.1358445!4d72.8346263!16s%2Fg%2F11njz8kx9x!3m5!1s0x3be7b7367971cf91:0xe0af0185a781db96!8m2!3d19.1358445!4d72.8346263!16s%2Fg%2F11njz8kx9x?entry=ttu&amp;g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              >GET DIRECTIONS ↗</a
+            >
+          </div>
+
+          <!-- Group 2: Direct Contact -->
+          <div class="info-sidebar-group">
+            <span class="sidebar-box-label">DIRECT CONTACT</span>
+            <h3>Call or WhatsApp Us</h3>
+            <p>
+              Speak to our studio coordinator for instant booking and custom
+              quotes.
+            </p>
+            <div class="sidebar-phone-numbers">
+              <a class="sidebar-contact-item" href="tel:+918591318022">
+                <span>Phone:</span> <strong>+91 85913 18022</strong>
+              </a>
+              <a
+                class="sidebar-contact-item"
+                href="https://wa.me/918591318022"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>WhatsApp:</span> <strong>Chat Now →</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="closer" id="contact-footer">
+      <div class="closer-inner">
+        <h2>Got a recording date<br />in mind? <em>Let's lock it in.</em></h2>
+        <div class="closer-row">
+          <div class="closer-left">
+            <div class="closer-contact-section">
+              <span class="closer-contact-label">CONTACT</span>
+              <div class="closer-address">
+                <a
+                  href="https://google.com/maps/place/ACEFX+POST+PRODUCTION+COMPANY/@19.1358445,72.8334086,206m/data=!3m2!1e3!4b1!4m14!1m7!3m6!1s0x3be7b7367971cf91:0xe0af0185a781db96!2sACEFX+POST+PRODUCTION+COMPANY!8m2!3d19.1358445!4d72.8346263!16s%2Fg%2F11njz8kx9x!3m5!1s0x3be7b7367971cf91:0xe0af0185a781db96!8m2!3d19.1358445!4d72.8346263!16s%2Fg%2F11njz8kx9x?entry=ttu&amp;g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Andheri West, Mumbai</a
+                >
+              </div>
+              <div class="closer-phone">
+                Mobile: <a href="tel:+918591318022">+91 85913 18022</a>
+              </div>
+              <div class="closer-email">
+                Email: <a href="mailto:info@acefx.in">info@acefx.in</a>
+              </div>
+              <div class="closer-association">
+                Association with
+                <a
+                  href="https://acefx.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >acefx</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="closer-right">
+            <!-- Replace 918591318022 with your actual WhatsApp number -->
+            <a
+              class="closer-cta whatsapp-cta"
+              href="https://wa.me/918591318022"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style="display: block"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.704 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                />
+              </svg>
+              Chat on WhatsApp →
+            </a>
+          </div>
+        </div>
+        <div class="closer-footer-note">
+          Quotes for Premium scoped within 24 hours
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Handle plan card selection and auto-fill contact form dropdown
+      document.querySelectorAll(".plan").forEach((card) => {
+        card.addEventListener("click", function (e) {
+          const wasSelected = this.classList.contains("is-selected");
+
+          // Remove selection from all plans & reset meter animations
+          document.querySelectorAll(".plan").forEach((c) => {
+            c.classList.remove("is-selected");
+            c.querySelectorAll(".meter span").forEach((span) => {
+              span.style.animation = "none";
+              void span.offsetWidth;
+              span.style.animation = "";
+            });
+          });
+
+          // Trigger a reflow to restart the animation if already selected
+          if (wasSelected) {
+            void this.offsetWidth;
+          }
+
+          this.classList.add("is-selected");
+
+          // Auto-fill the plan select field in the form
+          const ctaBtn = this.querySelector(".plan-cta");
+          if (ctaBtn) {
+            const planValue = ctaBtn.getAttribute("data-plan");
+            const planSelect = document.getElementById("f-plan");
+            if (planSelect && planValue) {
+              planSelect.value = planValue;
+            }
+          }
+        });
+      });
+
+      const form = document.getElementById("quoteForm");
+      const status = document.getElementById("formStatus");
+      if (form) {
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const submitBtn = form.querySelector(".form-submit");
+          submitBtn.disabled = true;
+          submitBtn.textContent = "SENDING...";
+          status.style.color = "var(--green-led)";
+
+          const data = {
+            name: document.getElementById("f-name").value,
+            contact: document.getElementById("f-phone").value,
+            plan: document.getElementById("f-plan").value,
+            episodes: document.getElementById("f-eps").value,
+            message: document.getElementById("f-msg").value,
+            timestamp: new Date().toISOString(),
+          };
+
+          try {
+            await fetch(
+              "https//acefx-backend.vercel.com/api/auth/podcastContact",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              },
+            );
+            console.log(data);
+            status.textContent =
+              "✓ Request received — we'll get back to you within 24 hours.";
+            form.reset();
+          } catch (err) {
+            status.style.color = "#D63B2E";
+            status.textContent =
+              "Something went wrong — please try again or email us directly.";
+            console.error("Lead submit failed:", err);
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "SEND REQUEST →";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
